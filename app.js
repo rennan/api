@@ -1,23 +1,25 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mysql = require('mysql'),
-    connection = require('express-myconnection');
+// Dependencias
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    mysql = require('mysql'),
+    connection = require('express-myconnection'),
 
-var routes = require('./routes/index');
-var cidades = require('./routes/cidades');
-var empresas = require('./routes/empresas');
-var onibus = require('./routes/onibus');
-var vias = require('./routes/vias');
-var horarios = require('./routes/horarios');
-var itinerarios = require('./routes/itinerarios');
+    // Rotas
+    routes = require('./routes/index'),
+    cidades = require('./routes/cidades'),
+    empresas = require('./routes/empresas'),
+    onibus = require('./routes/onibus'),
+    vias = require('./routes/vias'),
+    horarios = require('./routes/horarios'),
+    itinerarios = require('./routes/itinerarios');
 
 var app = express();
 
-// Conexão no BD
+// Conexao no BD
 app.use(
     connection(mysql, {
         host: 'localhost',
@@ -35,7 +37,9 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -49,9 +53,9 @@ app.use('/itinerarios', itinerarios);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -59,23 +63,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 
