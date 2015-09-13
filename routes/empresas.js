@@ -90,6 +90,7 @@ router.route('/:id')
         var empresa = {
             data_atualizacao: timestamp
         };
+
         if (req.body.id_cidade && req.body.nome) {
             empresa.id_cidade = req.body.id_cidade;
             empresa.nome = req.body.nome;

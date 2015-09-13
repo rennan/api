@@ -1,31 +1,42 @@
 var express = require('express');
 var router = express.Router();
 
+router.route('/horarios/via/:id_via')
+    // Obter informações de horários de uma via
+    .get()
+
+
+router.route('/horarios/via/:id_via/dias-uteis')
+    // Obter informações de horários de uma via em dias úteis
+    .get();
+
+
+router.route('/horarios/via/:id_via/sabado')
+    // Obter informações de horários de uma via aos sabados
+    .get();
+
+
+router.route('/horarios/via/:id_via/domingo')
+    // Obter informações de horários de uma via aos domingos
+    .get();
+
+
+router.route('/horarios/via/:id_via/feriados')
+    // Obter informações de horários de uma via aos feriados
+    .get();
+
+
 router.route('/')
-    // Obter todos os horarios de um onibus
-    .get(function(req, res) {
-        
-    })
+    // Adiciona um novo horario de onibus
+    .post();
 
-    // Adiciona um novo horario para uma via de onibus
-    .post(function(req, res){
-        
-    });
 
-router.route('/:id')
-    // Obter informações horarios de um onibus
-    .get(function(req, res){
-        
-    })
+router.route('/horarios/:id')
+    // Editar um registro de horário de ônibus
+    .put()
 
-    // Editar um registro de um horarios de um onibus
-    .put(function(req, res){
-        
-    })
+    // Deletar um registro de horário de ônibus
+    .delete();
 
-    // Deletar um registro de um horarios de um onibus
-    .delete(function(req, res){
-        
-    });
 
 module.exports = router;
