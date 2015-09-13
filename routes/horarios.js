@@ -1,42 +1,80 @@
 var express = require('express');
 var router = express.Router();
 
-router.route('/horarios/via/:id_via')
+router.route('/via/:id_via')
     // Obter informações de horários de uma via
-    .get()
+    .get(function(req, res) {
+        var id_via = req.params.id_via;
+        req.getConnection(function(err, connection) {
+            var query = connection.query('SELECT * FROM horarios WHERE id_via = ?', id_via, function(err, rows) {
+                if (err) {
+                    res.status(200).json({
+                        status: false,
+                        message: 'Erro desconhecido. Por favor tente novamente.'
+                    });
+                } else {
+                    if (rows.length > 0) {
+                        res.json({
+                            status: true,
+                            horarios: rows
+                        });
+                    } else {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Não existe via com esse id.'
+                        });
+                    }
+                }
+            });
+        });
+    });
 
 
-router.route('/horarios/via/:id_via/dias-uteis')
+router.route('/via/:id_via/dias-uteis')
     // Obter informações de horários de uma via em dias úteis
-    .get();
+    .get(function(req, res) {
+
+    });
 
 
-router.route('/horarios/via/:id_via/sabado')
+router.route('/via/:id_via/sabado')
     // Obter informações de horários de uma via aos sabados
-    .get();
+    .get(function(req, res) {
+
+    });
 
 
-router.route('/horarios/via/:id_via/domingo')
+router.route('/via/:id_via/domingo')
     // Obter informações de horários de uma via aos domingos
-    .get();
+    .get(function(req, res) {
+
+    });
 
 
-router.route('/horarios/via/:id_via/feriados')
+router.route('/via/:id_via/feriados')
     // Obter informações de horários de uma via aos feriados
-    .get();
+    .get(function(req, res) {
+
+    });
 
 
 router.route('/')
     // Adiciona um novo horario de onibus
-    .post();
+    .post(function(req, res) {
+
+    });
 
 
-router.route('/horarios/:id')
+router.route('/:id')
     // Editar um registro de horário de ônibus
-    .put()
+    .put(function(req, res) {
+
+    })
 
     // Deletar um registro de horário de ônibus
-    .delete();
+    .delete(function(req, res) {
+
+    });
 
 
 module.exports = router;
