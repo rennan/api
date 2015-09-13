@@ -40,6 +40,9 @@ app.use('/', routes);
 app.use('/cidades', cidades);
 app.use('/empresas', empresas);
 app.use('/onibus', onibus);
+app.use('/vias', vias);
+app.use('/horarios', horarios);
+app.use('/itinerarios', itinerarios);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
