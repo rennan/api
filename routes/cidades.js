@@ -6,15 +6,23 @@ router.route('/')
     .get(function(req, res) {
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM cidades', function(err, rows) {
-                if (rows.length > 0) {
-                    res.json({
-                        cidades: rows
-                    });
-                } else {
+                if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Não existem cidades cadastradas.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
+                } else {
+                    if (rows.length > 0) {
+                        res.json({
+                            status: true,
+                            cidades: rows
+                        });
+                    } else {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Não existem cidades cadastradas.'
+                        });
+                    }
                 }
             });
         });
@@ -31,7 +39,7 @@ router.route('/')
                 if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Houve um erro ao inserir o registro. Por favor tente novamente.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     res.status(201).json({
@@ -53,7 +61,7 @@ router.route('/:id')
                 if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Erro desconhecido.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (rows.length > 0) {
@@ -82,7 +90,7 @@ router.route('/:id')
                 if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Erro desconhecido.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (result.affectedRows > 0) {
@@ -110,7 +118,7 @@ router.route('/:id')
                 if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Erro desconhecido.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (result.affectedRows > 0) {

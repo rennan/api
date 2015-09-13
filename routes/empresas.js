@@ -1,6 +1,7 @@
 var express = require('express');
 var moment = require('moment');
 var router = express.Router();
+var timestamp = moment(Date.now()).format('DD/MM/YYYY HH:mm:ss');
 
 router.route('/')
     // Obter todas as empresas
@@ -10,7 +11,7 @@ router.route('/')
                 if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Erro desconhecido.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (rows.length > 0) {
@@ -34,8 +35,8 @@ router.route('/')
         var empresa = {
             nome: req.body.nome,
             id_cidade: req.body.id_cidade,
-            data_criacao: moment(Date.now()).format('DD/MM/YYYY HH:mm:ss'),
-            data_atualizacao: moment(Date.now()).format('DD/MM/YYYY HH:mm:ss')
+            data_criacao: timestamp,
+            data_atualizacao: timestamp
         };
         req.getConnection(function(err, connection) {
             connection.query('INSERT INTO empresas SET ?', empresa, function(err, result) {
@@ -64,7 +65,7 @@ router.route('/:id')
                 if (err) {
                     res.status(200).json({
                         status: false,
-                        message: 'Erro desconhecido.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (rows.length > 0) {
@@ -87,7 +88,7 @@ router.route('/:id')
     .put(function(req, res) {
         var id = req.params.id;
         var empresa = {
-            data_atualizacao: moment(Date.now()).format('DD/MM/YYYY HH:mm:ss')
+            data_atualizacao: timestamp
         };
         if (req.body.id_cidade && req.body.nome) {
             empresa.id_cidade = req.body.id_cidade;
@@ -98,7 +99,7 @@ router.route('/:id')
                     if (err) {
                         res.status(200).json({
                             status: false,
-                            message: 'Erro desconhecido.'
+                            message: 'Erro desconhecido. Por favor tente novamente.'
                         });
                     } else {
                         if (result.affectedRows > 0) {
@@ -106,7 +107,7 @@ router.route('/:id')
                                 status: true,
                                 id: req.params.id,
                                 message: 'Empresa editada com sucesso.',
-                                data_atualizacao: moment(Date.now()).format('DD/MM/YYYY HH:mm:ss')
+                                data_atualizacao: timestamp
                             });
                         } else {
                             res.status(200).json({
