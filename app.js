@@ -11,6 +11,9 @@ var routes = require('./routes/index');
 var cidades = require('./routes/cidades');
 var empresas = require('./routes/empresas');
 var onibus = require('./routes/onibus');
+var vias = require('./routes/vias');
+var horarios = require('./routes/horarios');
+var itinerarios = require('./routes/itinerarios');
 
 var app = express();
 
