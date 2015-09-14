@@ -149,7 +149,45 @@ router.route('/via/:id_via/feriados')
 router.route('/')
     // Adiciona um novo horario de onibus
     .post(function(req, res) {
+        var horario = {};
+        if (req.body.dias_uteis)
+            horario.dias_uteis = req.body.dias_uteis;
+        if (req.body.sabado)
+            horario.sabado = req.body.sabado;
+        if (req.body.domingo)
+            horario.domingo = req.body.domingo;
+        if (req.body.feriado)
+            horario.feriado = req.body.feriado;
 
+        if (req.body.id_via && req.body.ponto_inicial && req.body.hora) {
+
+            horario.id_via = req.body.id_via;
+            horario.ponto_inicial = req.body.ponto_inicial;
+            horario.hora = req.body.hora;
+
+            req.getConnection(function(err, connection) {
+                connection.query('INSERT INTO horarios SET ?', horario, function(err, result) {
+                    if (err) {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Não existe cidade com esse id.'
+                        });
+                    } else {
+                        res.status(201).json({
+                            status: true,
+                            id: result.insertId,
+                            message: 'Horário de via cadastrado com sucesso.'
+                        });
+                    }
+                });
+            });
+
+        } else {
+            res.status(200).json({
+                status: false,
+                message: 'Os campos "id_via", ponto_inicial" e "hora" são obrigatórios.'
+            });
+        }
     });
 
 
