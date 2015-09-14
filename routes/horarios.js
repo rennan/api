@@ -195,6 +195,47 @@ router.route('/:id')
     // Editar um registro de horário de ônibus
     .put(function(req, res) {
         var id = req.params.id;
+        var horario = {};
+        if (req.body.dias_uteis)
+            horario.dias_uteis = req.body.dias_uteis;
+        if (req.body.sabado)
+            horario.sabado = req.body.sabado;
+        if (req.body.domingo)
+            horario.domingo = req.body.domingo;
+        if (req.body.feriado)
+            horario.feriado = req.body.feriado;
+
+        if (req.body.id_via && req.body.ponto_inicial && req.body.hora) {
+            req.getConnection(function(err, connection) {
+                connection.query('UPDATE horarios SET ? WHERE id = ?', [horario, id], function(err, result) {
+                    if (err) {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Erro desconhecido. Por favor tente novamente.'
+                        });
+                    } else {
+                        if (result.affectedRows > 0) {
+                            res.status(200).json({
+                                status: true,
+                                id: req.params.id,
+                                message: 'Horário de via editado com sucesso.'
+                            });
+                        } else {
+                            res.status(200).json({
+                                status: false,
+                                id: req.params.id,
+                                message: 'Não existe horário de via com esse id.'
+                            });
+                        }
+                    }
+                });
+            });
+        } else {
+            res.status(200).json({
+                status: false,
+                message: 'Os campos "id_via", "ponto_inicial" e "hora" são obrigatórios.'
+            });
+        }
     })
 
     // Deletar um registro de horário de ônibus

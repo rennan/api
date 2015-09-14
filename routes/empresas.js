@@ -113,6 +113,7 @@ router.route('/:id')
                         } else {
                             res.status(200).json({
                                 status: false,
+                                id: req.params.id,
                                 message: 'Não existe empresa com esse id.'
                             });
                         }
