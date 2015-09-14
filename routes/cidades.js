@@ -39,7 +39,7 @@ router.route('/')
             req.getConnection(function(err, connection) {
                 connection.query('INSERT INTO cidades SET ?', cidade, function(err, result) {
                     if (err) {
-                        res.status(200).json({
+                        res.status(400).json({
                             status: false,
                             message: 'Erro desconhecido. Por favor tente novamente.'
                         });
@@ -67,7 +67,7 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM cidades WHERE id = ?', id, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -96,7 +96,7 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             connection.query('UPDATE cidades SET ? WHERE id = ?', [cidade, id], function(err, result) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -124,7 +124,7 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             connection.query('DELETE from cidades WHERE id = ?', id, function(err, result) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });

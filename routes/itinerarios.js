@@ -8,7 +8,7 @@ router.route('/via/:id_via')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM itinerarios WHERE id_via = ?', id_via, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -121,7 +121,7 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             connection.query('DELETE from itinerarios WHERE id = ?', id, function(err, result) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });

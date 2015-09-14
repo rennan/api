@@ -9,7 +9,7 @@ router.route('/')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM empresas', function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -74,7 +74,7 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM empresas WHERE id = ?', id, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -109,7 +109,7 @@ router.route('/:id')
             req.getConnection(function(err, connection) {
                 connection.query('UPDATE empresas SET ? WHERE id = ?', [empresa, id], function(err, result) {
                     if (err) {
-                        res.status(200).json({
+                        res.status(400).json({
                             status: false,
                             message: 'Erro desconhecido. Por favor tente novamente.'
                         });
@@ -145,9 +145,9 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             connection.query('DELETE from empresas WHERE id = ?', id, function(err, result) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
-                        message: 'Não é possível deletar esta empresa.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (result.affectedRows > 0) {

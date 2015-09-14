@@ -8,7 +8,7 @@ router.route('/via/:id_via')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM horarios WHERE id_via = ?', id_via, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -37,7 +37,7 @@ router.route('/via/:id_via/dias-uteis')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM horarios WHERE id_via = ? AND dias_uteis = 1', id_via, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -66,7 +66,7 @@ router.route('/via/:id_via/sabado')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM horarios WHERE id_via = ? AND sabado = 1', id_via, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -95,7 +95,7 @@ router.route('/via/:id_via/domingo')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM horarios WHERE id_via = ? AND domingo = 1', id_via, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -124,7 +124,7 @@ router.route('/via/:id_via/feriados')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM horarios WHERE id_via = ? AND feriado = 1', id_via, function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });
@@ -214,7 +214,7 @@ router.route('/:id')
             req.getConnection(function(err, connection) {
                 connection.query('UPDATE horarios SET ? WHERE id = ?', [horario, id], function(err, result) {
                     if (err) {
-                        res.status(200).json({
+                        res.status(400).json({
                             status: false,
                             message: 'Erro desconhecido. Por favor tente novamente.'
                         });
@@ -249,9 +249,9 @@ router.route('/:id')
         req.getConnection(function(err, connection) {
             connection.query('DELETE from horarios WHERE id = ?', id, function(err, result) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
-                        message: 'Não é possível deletar este horário.'
+                        message: 'Erro desconhecido. Por favor tente novamente.'
                     });
                 } else {
                     if (result.affectedRows > 0) {
