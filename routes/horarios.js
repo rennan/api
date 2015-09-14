@@ -194,12 +194,34 @@ router.route('/')
 router.route('/:id')
     // Editar um registro de horário de ônibus
     .put(function(req, res) {
-
+        var id = req.params.id;
     })
 
     // Deletar um registro de horário de ônibus
     .delete(function(req, res) {
-
+        var id = req.params.id;
+        req.getConnection(function(err, connection) {
+            connection.query('DELETE from horarios WHERE id = ?', id, function(err, result) {
+                if (err) {
+                    res.status(200).json({
+                        status: false,
+                        message: 'Não é possível deletar este horário.'
+                    });
+                } else {
+                    if (result.affectedRows > 0) {
+                        res.status(200).json({
+                            status: true,
+                            message: 'Horário de via removido com sucesso.'
+                        });
+                    } else {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Não existe horário de via com esse id.'
+                        });
+                    }
+                }
+            });
+        });
     });
 
 
