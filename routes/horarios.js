@@ -21,7 +21,7 @@ router.route('/via/:id_via')
                     } else {
                         res.status(200).json({
                             status: false,
-                            message: 'Não existe via com esse id.'
+                            message: 'Não existe(m) horário(s) cadastrado(s) ou para o id desta via.'
                         });
                     }
                 }
@@ -50,7 +50,7 @@ router.route('/via/:id_via/dias-uteis')
                     } else {
                         res.status(200).json({
                             status: false,
-                            message: 'Não existe via com esse id.'
+                            message: 'Não existe(m) horário(s) cadastrado(s) ou para o id desta via.'
                         });
                     }
                 }
@@ -79,7 +79,7 @@ router.route('/via/:id_via/sabado')
                     } else {
                         res.status(200).json({
                             status: false,
-                            message: 'Não existe via com esse id.'
+                            message: 'Não existe(m) horário(s) para sábado ou para o id desta via.'
                         });
                     }
                 }
@@ -108,7 +108,7 @@ router.route('/via/:id_via/domingo')
                     } else {
                         res.status(200).json({
                             status: false,
-                            message: 'Não existe via com esse id.'
+                            message: 'Não existe(m) horário(s) para domingo ou para o id desta via.'
                         });
                     }
                 }
@@ -137,7 +137,7 @@ router.route('/via/:id_via/feriados')
                     } else {
                         res.status(200).json({
                             status: false,
-                            message: 'Não existe via com esse id.'
+                            message: 'Não existe(m) horário(s) para feriado ou para o id desta via.'
                         });
                     }
                 }
@@ -206,6 +206,11 @@ router.route('/:id')
             horario.feriado = req.body.feriado;
 
         if (req.body.id_via && req.body.ponto_inicial && req.body.hora) {
+
+            horario.id_via = req.body.id_via;
+            horario.ponto_inicial = req.body.ponto_inicial;
+            horario.hora = req.body.hora;
+
             req.getConnection(function(err, connection) {
                 connection.query('UPDATE horarios SET ? WHERE id = ?', [horario, id], function(err, result) {
                     if (err) {
