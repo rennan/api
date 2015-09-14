@@ -30,26 +30,34 @@ router.route('/')
 
     // Adiciona uma nova cidade
     .post(function(req, res) {
-        var cidade = {
-            nome: req.body.nome,
-            estado: req.body.estado
-        };
-        req.getConnection(function(err, connection) {
-            connection.query('INSERT INTO cidades SET ?', cidade, function(err, result) {
-                if (err) {
-                    res.status(200).json({
-                        status: false,
-                        message: 'Erro desconhecido. Por favor tente novamente.'
-                    });
-                } else {
-                    res.status(201).json({
-                        status: true,
-                        id: result.insertId,
-                        message: 'Cidade cadastrada com sucesso.'
-                    });
-                }
+        var cidade = {};
+
+        if (req.body.nome && req.body.estado) {
+            cidade.nome = req.body.nome;
+            cidade.estado = req.body.estado;
+
+            req.getConnection(function(err, connection) {
+                connection.query('INSERT INTO cidades SET ?', cidade, function(err, result) {
+                    if (err) {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Erro desconhecido. Por favor tente novamente.'
+                        });
+                    } else {
+                        res.status(201).json({
+                            status: true,
+                            id: result.insertId,
+                            message: 'Cidade cadastrada com sucesso.'
+                        });
+                    }
+                });
             });
-        });
+        } else {
+            res.status(200).json({
+                status: false,
+                message: 'Os campos "nome", e "estado" são obrigatórios.'
+            });
+        }
     });
 
 router.route('/:id')
