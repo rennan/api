@@ -32,28 +32,39 @@ router.route('/')
 
     // Adiciona uma nova empresa
     .post(function(req, res) {
+
         var empresa = {
-            nome: req.body.nome,
-            id_cidade: req.body.id_cidade,
             data_criacao: timestamp,
             data_atualizacao: timestamp
         };
-        req.getConnection(function(err, connection) {
-            connection.query('INSERT INTO empresas SET ?', empresa, function(err, result) {
-                if (err) {
-                    res.status(200).json({
-                        status: false,
-                        message: 'Não existe cidade com esse id.'
-                    });
-                } else {
-                    res.status(201).json({
-                        status: true,
-                        id: result.insertId,
-                        message: 'Empresa cadastrada com sucesso.'
-                    });
-                }
+
+        if (req.body.id_cidade && req.body.nome) {
+            empresa.id_cidade = req.body.id_cidade;
+            empresa.nome = req.body.nome;
+
+            req.getConnection(function(err, connection) {
+                connection.query('INSERT INTO empresas SET ?', empresa, function(err, result) {
+                    if (err) {
+                        res.status(200).json({
+                            status: false,
+                            message: 'Não existe cidade com esse id.'
+                        });
+                    } else {
+                        res.status(201).json({
+                            status: true,
+                            id: result.insertId,
+                            message: 'Empresa cadastrada com sucesso.'
+                        });
+                    }
+                });
             });
-        });
+
+        } else {
+            res.status(200).json({
+                status: false,
+                message: 'Os campos "id_cidade", e "nome" são obrigatórios.'
+            });
+        }
     });
 
 router.route('/:id')

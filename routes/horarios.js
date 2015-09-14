@@ -185,7 +185,7 @@ router.route('/')
         } else {
             res.status(200).json({
                 status: false,
-                message: 'Os campos "id_via", ponto_inicial" e "hora" são obrigatórios.'
+                message: 'Os campos "id_via", "ponto_inicial" e "hora" são obrigatórios.'
             });
         }
     });
