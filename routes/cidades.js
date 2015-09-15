@@ -73,7 +73,10 @@ router.route('/:id')
                     });
                 } else {
                     if (rows.length > 0) {
-                        res.json(rows);
+                        res.json({
+                            status: true,
+                            cidade: rows
+                        });
                     } else {
                         res.status(200).json({
                             status: false,
