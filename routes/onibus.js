@@ -9,7 +9,7 @@ router.route('/')
         req.getConnection(function(err, connection) {
             var query = connection.query('SELECT * FROM circulares', function(err, rows) {
                 if (err) {
-                    res.status(200).json({
+                    res.status(400).json({
                         status: false,
                         message: 'Erro desconhecido. Por favor tente novamente.'
                     });

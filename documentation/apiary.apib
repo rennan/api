@@ -1,0 +1,667 @@
+FORMAT: 1A
+
+# API Transporte Público
+
+API para gerenciar informações de Linhas, Horários e Itinerários de ônibus públicos.
+
+## Cidades [/cidades]
+
+### Obter todas as cidades [GET]
+
++ Response 200 (application/json)
+
+		{
+			"cidades": [
+				{
+					"id": "1",
+					"nome": "Londrina",
+					"estado": "PR"
+				},
+				{
+					"id": "2",
+					"nome": "Maringá",
+					"estado": "PR"
+				},
+				{
+					"id": "3",
+					"nome": "Curitiba",
+					"estado": "PR"
+				}
+			]
+		}
+
+### Adiciona uma nova cidade [POST]
+
++ Request (application/json)
+
+		{
+			"nome": "Cascavel",
+			"estado": "PR"
+		}
+
++ Response 201 (application/json)
+
+	+ Headers
+
+			Location: /cidades/4
+
+	+ Body
+
+			{
+				"id": "4"
+				"status": "Cidade cadastrada com sucesso"
+			}
+
+## Gerenciar Coleções de Cidades [/cidades/:id]
+
+### Obter informações de uma cidade específica [GET]
+
++ Request (application/json)
+
+		{
+			"id": "4"
+		}
+		
++ Response 200 (application/json)
+
+		{
+			"id": "4",
+			"nome": "Cascavel",
+			"estado": "PR"
+		}
+
+### Editar um registro de uma cidade específica [PUT]
+
++ Request (application/json)
+
+		{
+			"id": "4",
+			"nome": "Ponta Grossa"
+		}
+		
++ Response 200 (application/json)
+
+		{
+			"id": "4"
+			"status": "Cidade editada com sucesso"
+		}
+
+### Deletar um registro de uma cidade específica [DELETE]
+
++ Request (application/json)
+
+		{
+			"id": "4"
+		}
+		
++ Response 200 (application/json)
+
+		{
+			"status": "Cidade removida com sucesso"
+		}
+
+## Recursos para Empresas [/empresas]
+
+### Obter todas as empresas [GET]
+
++ Response 200 (application/json)
+
+		{
+			"empresas": [
+				{
+					"id": "1",
+					"id_cidade": "1",
+					"nome": "TCGL",
+					"data_criacao": "MM/DD/YYYY hh:mm:ss",
+					"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+				},
+				{
+					"id": "2"
+					"id_cidade": "1",
+					"nome": "Londrisul",
+					"data_criacao": "MM/DD/YYYY hh:mm:ss",
+					"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+				}
+			]
+		}
+
+### Adiciona uma nova empresa [POST]
+
++ Request (application/json)
+
+		{
+			"id_cidade": "1",
+			"nome": "Viação Garcia"
+		}
+
++ Response 201 (application/json)
+
+	+ Headers
+
+			Location: /empresas/3
+
+	+ Body
+
+			{
+				"id": "3",
+				"status": "Empresa cadastrada com sucesso",
+				"data_criacao": "MM/DD/YYYY hh:mm:ss",
+				"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+			}
+
+## Gerenciar Coleções de Empresas [/empresas/{id}]
+
+### Obter informações de uma empresa específica [GET]
+
++ Request (application/json)
+
+		{
+			"id": "2"
+		}
+		
++ Response 200 (application/json)
+
+		{
+			"id": "2",
+			"id_cidade": "1",
+			"nome": "Londrisul",
+			"data_criacao": "MM/DD/YYYY hh:mm:ss",
+			"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+		}
+
+### Editar um registro de uma empresa específica [PUT]
+
++ Request (application/json)
+
+		{
+			"id": "2",
+			"nome": "TIL Transportes Coletivos S/A",
+		}
+		
++ Response 200 (application/json)
+
+		{
+			"id": "2",
+			"status": "Empresa editada com sucesso",
+			"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+		}
+
+### Deletar um registro de uma empresa específica [DELETE]
+
++ Request (application/json)
+
+		{
+			"id": "2"
+		}
+		
++ Response 200 (application/json)
+
+		{
+			"status": "Empresa removida com sucesso"
+		}
+
+## Recursos para Ônibus [/onibus]
+
+### Obter todos os ônibus [GET]
+
++ Response 200 (application/json)
+
+		{
+			"linhas": [
+				{
+					"id": "1",
+					"id_empresa": "1",
+					"linha": "113"
+					"nome": "Pioneiros",
+					"data_criacao": "MM/DD/YYYY hh:mm:ss",
+					"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+				},
+				{
+					"id": "2",
+					"id_empresa": "1",
+					"linha": "112"
+					"nome": "Alexandre Urbanas",
+					"data_criacao": "MM/DD/YYYY hh:mm:ss",
+					"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+				}
+			]
+		}
+
+### Adiciona um novo ônibus [POST]
+
++ Request (application/json)
+
+		{
+			"id_empresa": "1",
+			"linha": "114",
+			"nome": "Boulevard Shopping"
+		}
+
++ Response 201 (application/json)
+
+	+ Headers
+
+			Location: /onibus/3
+
+	+ Body
+
+			{
+				"id": "3",
+				"status": "Ônibus cadastrado com sucesso",
+				"data_criacao": "MM/DD/YYYY hh:mm:ss",
+				"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+			}
+
+## Gerenciar Coleções de Ônibus [/onibus/{id}]
+
+### Obter informações de um ônibus específico [GET]
+
++ Request (application/json)
+
+		{
+			"id": "1"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"id": "1",
+			"id_empresa": "1",
+			"linha": "113"
+			"nome": "Pioneiros",
+			"data_criacao": "MM/DD/YYYY hh:mm:ss",
+			"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+		}
+
+### Editar um registro de um ônibus específico [PUT]
+
++ Request (application/json)
+
+		{
+			"id": "1",
+			"id_empresa": "2"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"id": "1",
+			"status": "Ônibus editado com sucesso",
+			"data_atualizacao": "MM/DD/YYYY hh:mm:ss"
+		}
+
+### Deletar um registro de um ônibus específico [DELETE]
+
++ Request (application/json)
+
+		{
+			"id": "1"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"status": "Ônibus removido com sucesso",
+		}
+
+## Recursos para Vias [/vias/onibus/{id}]
+
+### Obter todas as vias de um ônibus específico [GET]
+
++ Response 200 (application/json)
+
+		{
+			"id_onibus": "1",
+			"vias": [
+				{
+					"id": "1",
+					"nome": "Expresso UTFPR"
+				},
+				{
+					"id": "2",
+					"nome": "Parque Tauá"
+				}
+			]
+		}
+
+### Adiciona uma nova via de um ônibus específico [POST]
+
++ Request (application/json)
+
+		{
+			"id_onibus": "1",
+			"nome": "Normal"
+		}
+
++ Response 201 (application/json)
+
+	+ Headers
+
+			Location: /vias/onibus/3
+
+	+ Body
+
+			{
+				"id": "3"
+				"status": "Via de ônibus cadastrada com sucesso"
+			}
+
+### Editar uma via de um ônibus específico [PUT]
+
++ Request (application/json)
+
+		{
+			"id": "3",
+			"nome" : "UTFPR Limoeiro"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"id": "3",
+			"status": "Via de ônibus editada com sucesso"
+		}
+
+### Deletar uma via de de um ônibus específico [DELETE]
+
++ Request (application/json)
+
+		{
+			"id": "3"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"status": "Via de ônibus removida com sucesso"
+		}
+
+## Recursos para Horários [/horarios/onibus/{id_via}/horarios]
+
+### Obter todos os horários de uma via de ônibus específico [GET]
+
++ Request (application/json)
+
+		{
+			"id_via": "1"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"id_via: "1",
+			"horarios": [
+				{
+					"id": "1",
+					"ponto_inicial": "Terminal Central",
+					"dias_uteis": true,
+					"sabado": false,
+					"domingo": false,
+					"feriado": false,
+					"hora": "06:05"
+				},
+				{
+					"id": "2",
+					"ponto_inicial": "Bairro",
+					"dias_uteis": true,
+					"sabado": false,
+					"domingo": false,
+					"feriado": false,
+					"hora": "06:25"
+				},
+				{
+					"id": "3",
+					"ponto_inicial": "Terminal Central",
+					"dias_uteis": true,
+					"sabado": false,
+					"domingo": false,
+					"feriado": false,
+					"hora": "06:45"
+				},
+				{
+					"id": "4",
+					"ponto_inicial": "Bairro",
+					"dias_uteis": true,
+					"sabado": false,
+					"domingo": false,
+					"feriado": false,
+					"hora": "07:01"
+				}
+			]
+		}
+
+### Adiciona um horário de uma via de ônibus específico [POST]
+
++ Request (application/json)
+
+		{
+			"id_via": "1",
+			"ponto_inicial": "Terminal Central",
+			"dias_uteis": true,
+			"sabado": false,
+			"domingo": false,
+			"feriado": false,
+			"hora": "07:45"
+		}
+
++ Response 201 (application/json)
+
+	+ Headers
+
+			Location: /horarios/onibus/1/horarios
+
+	+ Body
+
+			{
+				"id": "5",
+				"status": "Horârio de ônibus cadastrado com sucesso"
+			}
+
+## Gerenciar Coleções de Horários [/horarios/onibus/{id_via}/horarios/{id}]
+
+### Editar um registro de horário de uma via de ônibus específico [PUT]
+
++ Request (application/json)
+
+		{
+			"id_via": "1",
+			"id": "5",
+			"hora": "07:45"
+		}
+
++ Response 201 (application/json)
+
+		{
+			
+			"id": "5",
+			"status": "Horário de via editado com sucesso"
+		}
+
+### Deletar um registro de horário de uma via de ônibus específico [DELETE]
+
++ Request (application/json)
+
+		{
+			"id": "5"
+		}
+
++ Response 201 (application/json)
+
+		{
+			"status": "Horário de via removido com sucesso"
+		}
+
+## Recursos para Itinerários [/itinerarios/onibus/{id_via}/paradas]
+
+### Obter todas paradas do itinerário de uma via de ônibus específico [GET]
+
++ Request (application/json)
+
+		{
+			"id_via": "1"
+		}
+
++ Response 200 (application/json)
+
+		{
+			"id_via": "1",
+			"paradas": [
+				{
+					"id": "1",
+					"ordem": "1",
+					"descricao": "Terminal urbano",
+					"latitude": "-23.3078798",
+					"longitude": "-51.1599011"
+		
+				},
+				{
+					"id": "2",
+					"ordem": "2",
+					"descricao": "Rua Benjamin Constant",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "3",
+					"ordem": "3",
+					"descricao": "Av. Jacob Bartolomeu Minatti (Leste-oeste)",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "4",
+					"ordem": "4",
+					"descricao": "Av. Theodoro Victorelli",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "5",
+					"ordem": "5",
+					"descricao": "Rua Santa Terezinha",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "6",
+					"ordem": "6",
+					"descricao": "Av. Celso Garcia Cid",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "7",
+					"ordem": "7",
+					"descricao": "Estada dos Pioneiros",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "8",
+					"ordem": "8",
+					"descricao": "Av. Jamil Scaff",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "9",
+					"ordem": "9",
+					"descricao": "Av. Mituo Morita",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "10",
+					"ordem": "10",
+					"descricao": "Av. Antônio Euclipes Sapia",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "11",
+					"ordem": "11",
+					"descricao": "Rua Issami Ideriha",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "12",
+					"ordem": "12",
+					"descricao": "Rua Alexandre Rocha Filho",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "12",
+					"ordem": "12",
+					"descricao": "Estrada dos Pioneiros",
+					"latitude": "",
+					"longitude": ""
+				},
+				{
+					"id": "13",
+					"ordem": "13",
+					"descricao": "UTFPR",
+					"latitude": "",
+					"longitude": ""
+				}
+			]
+		}
+
+### Adiciona uma nova parada do itinerário de uma via de ônibus específico [POST]
+
++ Request (application/json)
+
+		{
+			"id_via": "1",
+			"ordem": "14",
+			"descricao": "Rua Carmela Dutra"
+		}
+
++ Response 201 (application/json)
+
+	+ Headers
+
+			Location: /itinerarios/onibus/1/paradas
+
+	+ Body
+
+			{
+				"id": "14",
+				"status": "Parada de itinerário de ônibus cadastrada com sucesso"
+			}
+
+## Gerenciar Coleções de Itinerários [/itinerarios/onibus/{id_via}/paradas/{id}]
+
+### Editar um registro de parada do itinerário de uma via de ônibus específico [PUT]
+
++ Request (application/json)
+
+		{
+			"id_via": "1",
+			"id": "14",
+			"latitude": "-23.3162506",
+			"longitude": "-51.1380972",
+			
+		}
+
++ Response 201 (application/json)
+
+		{
+			"id": "14",
+			"status": "Parada do itinerário de ônibus editada com sucesso"
+		}
+
+### Deletar um registro de parada do itinerário de uma via de ônibus específico [DELETE]
+
++ Request (application/json)
+
+		{
+			"id": "14"
+		}
+
++ Response 201 (application/json)
+
+		{
+			"status": "Parada do itinerário de ônibus removida com sucesso"
+		}
