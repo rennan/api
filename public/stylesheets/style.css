@@ -1,8 +1,6 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+body,
+#menu .pure-menu-heading,
+.header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
