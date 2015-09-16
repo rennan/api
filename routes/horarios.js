@@ -21,7 +21,7 @@ router.route('/via/:id_via')
                     } else {
                         res.status(200).json({
                             status: false,
-                            message: 'Não existe(m) horário(s) cadastrado(s) ou para o id desta via.'
+                            message: 'Não existe(m) horário(s) cadastrado(s) para o id desta via.'
                         });
                     }
                 }
