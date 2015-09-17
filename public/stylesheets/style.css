@@ -1,6 +1,56 @@
 body,
 #menu .pure-menu-heading,
 .header {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+	font-family: 'Varela Round', sans-serif;
+	font-weight: 400;
+}
+
+.header {
+	border-bottom: 0 none;
+}
+
+.spinner-loading:after {
+	background: url(https://thomas.vanhoutte.be/miniblog/wp-content/uploads/spinner-rosetta-gray-26x26.gif) no-repeat right center;
+	content: " ";
+	width: 24px;
+	height: 24px;
+	position: absolute;
+}
+
+.pure-table { margin: 0 auto; }
+
+.pure-table tr:hover td {
+	background-color: #f2f2f2;
+}
+
+/* Icones */
+
+[class^=icon-] {
+	float: left;
+	transition: opacity 400ms ease;
+	opacity: 0.5;
+	width: 16px;
+	height: 16px;
+}
+
+a:hover [class^=icon-] {
+	opacity: 1;
+}
+
+.icon-edit-pencil {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABK0lEQVQ4T5WTzU3DQBBG32LnTDogHQAdJB2QClgqAA5YAiWSJSKQ4kNSwnZAOiAlOBXE6SDc4wxaBxv/Y3yzPO/tfOMdRcdHv8yvcPhAVITrjo3/uLeo6sijJ0GE4iKpFwlxeyMr+Y/AoLjNDvyRtAp+2yY0M2+sJ0FJwrpRcILVJ9A/nSrGvHp3BYmwqxVU4bTxnASGHOWmImiGi5L0rSD4G7ZJ2JnZ06Ai6AbLF0eG5s0LCwLtL/rEhy0iCqXOa++GVOHsIunpXCPKDmXJGeuKpAHOCYKQWLRtLYmSl7TAiUD77wNid0ss12m2TGIrSpnL8ZSeBg/AAtgTyygpcLhH1Mj+5/zA6mZjBXail7mPG5AlTm+VblzbwlmBABvA4BxWxn+Oum6orfsGhluckaxAr90AAAAASUVORK5CYII=);
+}
+
+.icon-garbage {
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABf0lEQVQ4T42TwVHCUBiEd2H0YhixA0rgQLgSwAIoASsQKwArADugBAqQGK6EAyXQgTjgRQfW+V8AgwTGXDLJ+//v7b9vH5HxrBrVHolueknCcyGc9v6WMxvgRwCjfYMBAQWFMA7OApJdVbMCCWWCS1AL1yCWBBVJzJN1Tvbwg4J1o9IR2MpSdLqrRl44G9j/X0Dgl5FH/z8AbPDkRbFTcwCs7isBlXsT9EFhCPJR0sQVkTVILyLaBG/Fbb3wOouOAArKxc/89bs1mVnrZlXmfAJA1xtPuWr4kcFuNl93jObLI4B9WJO9rTgLkF7fj3p0jKumvzSJlwA2YmEcF7MBO4lObtNfQnROg+pYU6IqGfEiwGZc565GFqakUIG3/W6lPcoErBv+wLnPbR1b9tIA5NSzU7LT8MK4c0ZBcgcuAf7eiSMTLY1grm8Aim2JLsqkSqKGOwUPXhgPsxXswgRoLqHk7oM5kNyDBcByOkQnObAwmXkueRmPnYCZuQ+RlfwAP/bwETd2ouoAAAAASUVORK5CYII=) no-repeat;
+	float: left;
+	width: 16px;
+	height: 16px;
+}
+
+.edit-buton,
+.delete-button {
+	position: relative;
+	font-size: 12px;
+	color: #666;
 }

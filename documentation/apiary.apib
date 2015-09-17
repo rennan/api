@@ -4,9 +4,7 @@ FORMAT: 1A
 
 API para gerenciar recursos para ônibus públicos.
 
-# Cidades
-
-## Recuperar / Adicionar [/cidades]
+## Recuperar, Adicionar - Cidades [/cidades]
 
 ### Obter todas as cidades [GET]
 
@@ -84,7 +82,7 @@ API para gerenciar recursos para ônibus públicos.
                 "status": "Cidade cadastrada com sucesso"
             }
 
-## Recuperar /  Editar / Deletar [/cidades/:id]
+## Recuperar, Editar, Deletar - Cidade [/cidades/:id]
 
 ### Obter informações de uma cidade [GET]
 
@@ -166,3 +164,60 @@ API para gerenciar recursos para ônibus públicos.
             "status": true,
             "message": "Cidade removida com sucesso"
         }
+
+## Recuperar, Adicionar - Empresas [/empresas]
+### Obter todas as empresas [GET]
+### Adiciona uma nova empresa [POST]
+
+## Recuperar, Editar, Deletar - Empresa [/empresas/:id]
+### Obter informações de uma empresa  [GET]
+### Editar um registro de uma empresa [PUT]
+### Deletar um registro de uma empresa [DELETE]
+
+## Recuperar, Adicionar - Ônibus [/onibus]
+### Obter todos os ônibus [GET]
+### Adiciona um novo ônibus [POST]
+
+## Recuperar, Editar, Deletar - Ônibus [/onibus/:id]
+### Obter informações de um ônibus [GET]
+### Editar um registro de um ônibus [PUT]
+### Deletar um registro de um ônibus [DELETE]
+
+
+## Recuperar, Adicionar - Vias [/vias]
+### Obter todas as vias de ônibus [GET]
+### Adiciona uma nova via de ônibus [POST]
+
+## Recuperar ônibus [/vias/onibus/:id]
+### Obter informações de vias de um ônibus específico [GET]
+
+## Recuperar, Editar, Deletar - Via [/vias/:id]
+### Obter informações de uma via de ônibus [GET]
+### Editar um registro de via de ônibus [PUT]
+### Deletar um registro de via de ônibus [DELETE]
+
+## Recuperar Horários [/horarios/via/:id_via]
+### Obter informações de horários de uma via [GET]
+### Obter informações de horários de uma via em dias úteis [GET]
+### Obter informações de horários de uma via aos sábados [GET]
+### Obter informações de horários de uma via aos domingos [GET]
+### Obter informações de horários de uma via aos feriados [GET]
+
+## Adicionar - Horário [/horarios]
+### Adiciona um novo horário de ônibus [POST]
+
+## Editar, Deletar - Horário [/horarios/:id]
+### Editar um registro de horário de ônibus [PUT]
+### Deletar um registro de horário de ônibus [DELETE]
+
+
+
+## Recuperar - Itinerários [/itinerarios/via/:id_via]
+### Obter todas paradas do itinerário de um ônibus [GET]
+
+## Adicionar - Itinerário [/itinerarios]
+### Adiciona uma nova parada do itinerário do ônibus [POST]
+
+## Editar, Deletar - Itinerário [/itinerarios/:id]
+### Editar um registro de parada do itinerário do ônibus [PUT]
+### Deletar um registro de parada do itinerário do ônibus [DELETE]

@@ -2,21 +2,23 @@ extends layout
 
 block content
 	.header
-		h1 Cidades
+		h1 Linhas
 	.content
 		table.pure-table.pure-table-horizontal
 			thead
 				tr
 					th #
+					th ID Empresa
 					th Nome
-					th Estado
+					th Linha
 					th(colspan='2')
 			tbody
-				each cidade in cidades
+				each linha in circulares
 					tr
-						td= cidade.id
-						td= cidade.nome
-						td= cidade.estado
+						td= linha.id
+						td= linha.id_empresa
+						td= linha.linha
+						td= linha.nome
 						td
 							a.delete-button(href='#', title='Editar registro')
 								i.icon-edit-pencil

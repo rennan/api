@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	.header
+		h1 Horários
+	.content
+		table.pure-table.pure-table-horizontal
+			thead
+				tr
+					th #
+					th Via
+					th Ponto inicial
+					th Dias úteis
+					th Sábado
+					th Domingo
+					th Feriados
+					th Hora
+					th(colspan='2')
+			tbody
+				each hora in horarios
+					tr
+						td= hora.id
+						td= hora.id_via
+						td= hora.ponto_inicial
+						td= hora.dias_uteis
+						td= hora.sabado
+						td= hora.domingo
+						td= hora.feriado
+						td= hora.hora
+						td
+							a.delete-button(href='#', title='Editar registro')
+								i.icon-edit-pencil
+						td
+							a.delete-button(href='#', title='Deletar registro')
+								i.icon-garbage
