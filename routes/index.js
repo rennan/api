@@ -94,7 +94,8 @@ router.get('/horarios', function(req, res, next) {
 				res.render('horarios', { 
 					title: 'Horários',
 					setMenu: 'horarios',
-					horarios: rows
+					horarios: rows,
+					script: 'horarios'
 				});
 			}
 		});
@@ -103,6 +104,25 @@ router.get('/horarios', function(req, res, next) {
 
 router.get('/itinerarios', function(req, res, next) {
 	res.render('itinerarios', { title: 'Itinerários' });
+});
+
+router.get('/buscar-horario', function(req, res) {
+	req.getConnection(function(err, connection) {
+		var query = connection.query('SELECT circulares.nome AS linha, circulares.linha AS codigo, vias.nome AS via FROM circulares INNER JOIN vias ON vias.id_onibus = circulares.id WHERE ' + (req.query.tipo == 'nome' ? ('CONCAT(circulares.nome, " ", vias.nome) LIKE "%' + req.query.texto + '%"') : 'circulares.linha = "' + req.query.texto + '"'), function(err, rows) {
+			console.log(rows);
+			if (err) {
+				res.status(400).json({
+					status: false,
+					message: 'Erro desconhecido. Por favor tente novamente.'
+				});
+			} else {
+				res.render('tabela-linhas', {
+					status: true,
+					linhas: rows
+				});
+			}
+		});
+	});
 });
 
 module.exports = router;

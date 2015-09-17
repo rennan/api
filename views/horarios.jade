@@ -4,32 +4,47 @@ block content
 	.header
 		h1 Horários
 	.content
-		table.pure-table.pure-table-horizontal
-			thead
-				tr
-					th #
-					th Via
-					th Ponto inicial
-					th Dias úteis
-					th Sábado
-					th Domingo
-					th Feriados
-					th Hora
-					th(colspan='2')
-			tbody
-				each hora in horarios
+		p Selecione o modo de busca das linhas
+		form.pure-form.pure-form-stacked
+			.pure-u-1.pure-u-md-1-3
+				select#modo-busca.pure-input-1-2
+					option(value='linha') Por número da linha
+					option(value='nome') Por nome da linha
+			.pure-u-1.pure-u-md-1-3
+				p
+					| Informe o 
+					span.modo-selecionado= ' nome '
+					| da linha desejada
+				input#texto-busca.pure-input-1-2
+			button(type='submit').submit.pure-button.pure-button-primary Buscar
+		.table-result
+		//- 
+			table.pure-table.pure-table-horizontal
+				thead
 					tr
-						td= hora.id
-						td= hora.id_via
-						td= hora.ponto_inicial
-						td= hora.dias_uteis
-						td= hora.sabado
-						td= hora.domingo
-						td= hora.feriado
-						td= hora.hora
-						td
-							a.delete-button(href='#', title='Editar registro')
-								i.icon-edit-pencil
-						td
-							a.delete-button(href='#', title='Deletar registro')
-								i.icon-garbage
+						th #
+						th Via
+						th Ponto inicial
+						th Dias úteis
+						th Sábado
+						th Domingo
+						th Feriados
+						th Hora
+						th(colspan='2')
+				tbody
+					each hora in horarios
+						tr
+							td= hora.id
+							td= hora.id_via
+							td= hora.ponto_inicial
+							td= hora.dias_uteis
+							td= hora.sabado
+							td= hora.domingo
+							td= hora.feriado
+							td= hora.hora
+							td
+								a.delete-button(href='#', title='Editar registro')
+									i.icon-edit-pencil
+							td
+								a.delete-button(href='#', title='Deletar registro')
+									i.icon-garbage

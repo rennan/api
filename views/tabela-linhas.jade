@@ -1,0 +1,22 @@
+if linhas.length > 0
+	table.pure-table.pure-table-horizontal
+		thead
+			tr
+				th Código
+				th Linha
+				th Via
+				th(colspan='2')
+		tbody
+			each linha in linhas
+				tr
+					td= linha.codigo
+					td= linha.linha
+					td= linha.via
+					td
+						a.delete-button(href='#', title='Exibir horários') Exibir horários
+							i.icon-edit-pencil
+					td
+						a.delete-button(href='#', title='Exibir itinerário') Exibir itinerário
+							i.icon-garbage
+else
+	p.message.message-error Nenhum resultado encontrado.
