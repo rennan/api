@@ -133,12 +133,12 @@ router.route('/:id')
 					});
 				} else {
 					if (result.affectedRows > 0) {
-						res.status(200).json({
+						res.status(204).json({
 							status: true,
 							message: 'Cidade removida com sucesso.'
 						});
 					} else {
-						res.status(200).json({
+						res.status(204).json({
 							status: false,
 							message: 'Não existe cidade com esse id.'
 						});

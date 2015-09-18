@@ -1,25 +1,29 @@
 extends layout
 
 block content
-	.header
-		h1 Vias
-	.content
-		table.pure-table.pure-table-horizontal
-			thead
-				tr
-					th #
-					th ID Ônibus
-					th Nome
-					th(colspan='2')
-			tbody
+	.container
+		h1.page-header Vias
+		p.bs-description
+			| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere cumque vel ipsa dolore repudiandae, quos facilis optio debitis. Excepturi tempora fugiat dolor quia neque omnis reprehenderit iste nulla. Nobis, voluptatum?
+		.bs-example
+			table.table.table-striped
+				thead
+					tr
+						th #
+						th Nome
+						th Estado
+						th(colspan='2')
+				tbody
 				each via in vias
 					tr
 						td= via.id
 						td= via.id_onibus
 						td= via.nome
 						td
-							a.delete-button(href='#', title='Editar registro')
-								i.icon-edit-pencil
+							a.button(href='#', title='Editar')
+								i.glyphicon.glyphicon-edit
+								span.text Editar
 						td
-							a.delete-button(href='#', title='Deletar registro')
-								i.icon-garbage
+							a.button(href='#', title='Deletar')
+								i.glyphicon.glyphicon-trash
+								span.text Deletar

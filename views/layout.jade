@@ -3,43 +3,30 @@ html
 	head
 		title= title
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Varela+Round')
-		link(rel='stylesheet', href='/stylesheets/pure-min.css')
-		link(rel='stylesheet', href='/stylesheets/theme.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')
+		link(rel='stylesheet', href='http://getbootstrap.com/assets/css/docs.min.css')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Raleway:300,500')
+		link(rel='stylesheet', href='/stylesheets/custom.css')
 	body
-		#layout
-			a#menuLink.menu-link(href='/')
-				span
-			#menu
-				.pure-menu
-					a.pure-menu-heading(href='/') API
-					ul.pure-menu-list
-						li.pure-menu-item(class= setMenu == 'cidades' ? 'pure-menu-selected' : '')
-							a.pure-menu-link(href='/cidades') Cidades
-						li.pure-menu-item(class= setMenu == 'empresas' ? 'pure-menu-selected' : '')
-							a.pure-menu-link(href='/empresas') Empresas
-						li.pure-menu-item(class= setMenu == 'linhas' ? 'pure-menu-selected' : '')
-							a.pure-menu-link(href='/linhas') Linhas
-						li.pure-menu-item(class= setMenu == 'vias' ? 'pure-menu-selected' : '')
-							a.pure-menu-link(href='/vias') Vias
-						li.pure-menu-item(class= setMenu == 'horarios' ? 'pure-menu-selected' : '')
-							a.pure-menu-link(href='/horarios') Horários
-			#main
-				block content
-				//- 
-					.footer
-						.legal.pure-g
-							.pure-u-1.u-sm-1-2
-								p.legal-license
-									| API de Transporte Público. Feito com ♥ usando 
-									a(href='http://expressjs.com/', target='_blank') Express
-									| .
-							.pure-u-1.u-sm-1-2
-								ul.legal-links
-									li
-										a(href='https://github.com/rennan/api/') Projeto no Github
-								p.legal-copyright
-									| © 2015 UTFPR - Londrina.
+		nav.navbar.navbar-default.navbar-fixed-top
+			.container-fluid
+				.navbar-header
+					a.navbar-brand(href='/') API
+				div
+					ul.nav.navbar-nav
+						li(class= setMenu == 'cidades' ? 'active' : '')
+							a(href='/cidades') Cidades
+						li(class= setMenu == 'empresas' ? 'active' : '')
+							a(href='/empresas') Empresas
+						li(class= setMenu == 'linhas' ? 'active' : '')
+							a(href='/linhas') Linhas
+						li(class= setMenu == 'vias' ? 'active' : '')
+							a(href='/vias') Vias
+						li(class= setMenu == 'horarios' ? 'active' : '')
+							a(href='/horarios') Horários
+		block content
 	script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+	script(type='text/javascript', src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
 	if script
 		script(type='text/javascript', src='/javascripts/' + script + '.js')

@@ -1,25 +1,29 @@
 extends layout
 
 block content
-	.header
-		h1 Cidades
-	.content
-		table.pure-table.pure-table-horizontal
-			thead
-				tr
-					th #
-					th Nome
-					th Estado
-					th(colspan='2')
-			tbody
-				each cidade in cidades
+	.container
+		h1.page-header Cidades
+		p.bs-description
+			| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere cumque vel ipsa dolore repudiandae, quos facilis optio debitis. Excepturi tempora fugiat dolor quia neque omnis reprehenderit iste nulla. Nobis, voluptatum?
+		.bs-example
+			table.table.table-striped
+				thead
 					tr
-						td= cidade.id
-						td= cidade.nome
-						td= cidade.estado
-						td
-							a.delete-button(href='#', title='Editar registro')
-								i.icon-edit-pencil
-						td
-							a.delete-button(href='#', title='Deletar registro')
-								i.icon-garbage
+						th #
+						th Nome
+						th Estado
+						th(colspan='2')
+				tbody
+					each cidade in cidades
+						tr
+							td= cidade.id
+							td= cidade.nome
+							td= cidade.estado
+							td
+								a.button(href='#', title='Editar')
+									i.glyphicon.glyphicon-edit
+									span.text Editar
+							td
+								a.button(href='#', title='Deletar')
+									i.glyphicon.glyphicon-trash
+									span.text Deletar

@@ -1,22 +1,25 @@
 if linhas.length > 0
-	table.pure-table.pure-table-horizontal
-		thead
-			tr
-				th Código
-				th Linha
-				th Via
-				th(colspan='2')
-		tbody
-			each linha in linhas
-				tr
-					td= linha.codigo
-					td= linha.linha
-					td= linha.via
-					td
-						a.delete-button(href='#', title='Exibir horários') Exibir horários
-							i.icon-edit-pencil
-					td
-						a.delete-button(href='#', title='Exibir itinerário') Exibir itinerário
-							i.icon-garbage
+	.bs-example
+			table.table.table-striped
+				thead
+					tr
+						th Linha
+						th Ônibus
+						th Via
+				tbody
+					each linha in linhas
+						tr
+							td
+								a.icon-button(href='#', title='Exibir horários')
+									i.glyphicon.glyphicon-time
+								a.icon-button(href='#', title='Exibir itinerário')
+									i.glyphicon.glyphicon-list-alt
+								= linha.codigo
+							td= linha.linha
+							td= linha.via
 else
-	p.message.message-error Nenhum resultado encontrado.
+	.alert.alert-danger.alert-dismissible(role='alert')
+		button(type='button', data-dismiss='alert', aria-label='Close').close
+			span(aria-hidden='true')
+				&times;
+		| Nenhum resultado encontrado.

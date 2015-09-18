@@ -1,18 +1,19 @@
 extends layout
 
 block content
-	.header
-		h1 Linhas
-	.content
-		table.pure-table.pure-table-horizontal
-			thead
-				tr
-					th #
-					th ID Empresa
-					th Nome
-					th Linha
-					th(colspan='2')
-			tbody
+	.container
+		h1.page-header Linhas
+		p.bs-description
+			| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere cumque vel ipsa dolore repudiandae, quos facilis optio debitis. Excepturi tempora fugiat dolor quia neque omnis reprehenderit iste nulla. Nobis, voluptatum?
+		.bs-example
+			table.table.table-striped
+				thead
+					tr
+						th #
+						th Nome
+						th Estado
+						th(colspan='2')
+				tbody
 				each linha in circulares
 					tr
 						td= linha.id
@@ -20,8 +21,10 @@ block content
 						td= linha.linha
 						td= linha.nome
 						td
-							a.delete-button(href='#', title='Editar registro')
-								i.icon-edit-pencil
+							a.button(href='#', title='Editar')
+								i.glyphicon.glyphicon-edit
+								span.text Editar
 						td
-							a.delete-button(href='#', title='Deletar registro')
-								i.icon-garbage
+							a.button(href='#', title='Deletar')
+								i.glyphicon.glyphicon-trash
+								span.text Deletar

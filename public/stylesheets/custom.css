@@ -1,0 +1,91 @@
+body {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: bottom center;
+	background-size: 100%;
+}
+
+.bs-docs-header {
+	padding-top: 11.5rem;
+
+	background-color: #f5d76e;
+	background-color: rgba(0,0,0,0.5);
+	background-image: none;
+}
+
+.bs-docs-header h1,
+.bs-docs-header p {
+	text-shadow: 0 1px 0 #000000;
+}
+
+.bs-docs-header p {
+	font-family: 'Raleway';
+
+	margin-bottom: 1.5rem;
+}
+
+.bs-docs-header h1 {
+	font-family: 'Varela Round';
+}
+
+.bs-docs-header p {
+	font-weight: 300;
+
+	color: #ffffff;
+}
+
+.bs-example {
+	padding: 15px;
+
+	border-radius: 3px;
+}
+
+.bs-example:after {
+	display: none;
+}
+
+.bs-description {
+	font-family: 'Raleway';
+}
+
+.page-header {
+	padding-top: 3rem;
+}
+
+.button {
+	color: #333333;
+}
+
+.button .text {
+	font-size: 12px;
+	line-height: 20px;
+
+	position: absolute;
+
+	transition: all 400ms ease;
+
+	opacity: 0;
+}
+
+.button:hover .text {
+	padding-left: 5px;
+
+	transition-duration: 500ms;
+
+	opacity: 1;
+}
+
+.button:hover .glyphicon-trash {
+	color: #d9534f;
+}
+
+.button:hover .glyphicon-edit {
+	color: #5cb85c;
+}
+
+
+.icon-button {
+	font-size: 16px;
+	margin-right: 5px;
+	color: #333333;
+}
