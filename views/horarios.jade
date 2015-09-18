@@ -7,15 +7,15 @@ block content
 			| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere cumque vel ipsa dolore repudiandae, quos facilis optio debitis. Excepturi tempora fugiat dolor quia neque omnis reprehenderit iste nulla. Nobis, voluptatum?
 		form(role='form')
 			.row
-				.col-xs-4
-					label(for='modo-busca') Selecione o modo de busca das linhas
+				.col-xs-3
+					label(for='modo-busca') Selecione o modo de busca
 					select#modo-busca.form-control
 						option(value='linha', selected) Por número da linha
 						option(value='nome') Por nome da linha
-			.row
-				.col-xs-3
+				.col-xs-2
+					label(for='texto-busca') Digite o texto
 					input#texto-busca.form-control(required)
-			button(type='submit').btn.btn-default.submit
-				| Buscar por 
-				span.modo-selecionado= 'nome'
+			.form-group
+			button(type='submit').btn.btn-default.submit Buscar
+		hr
 		.table-result

@@ -1,9 +1,5 @@
 $(function() {
 
-	$('#modo-busca').on('change', function() {
-		$('.modo-selecionado').text(' ' + $(this).val() + ' ');
-	});
-
 	$('.submit').on('click', function(event) {
 		event.preventDefault();
 		if ( $('#texto-busca').val() != '') {

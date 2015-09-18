@@ -12,11 +12,12 @@ if linhas.length > 0
 							td
 								a.icon-button(href='#', title='Exibir horários')
 									i.glyphicon.glyphicon-time
-								a.icon-button(href='#', title='Exibir itinerário')
+								a.icon-button(href='#', title='Exibir itinerário', data-toggle='modal', data-target=linha.id)
 									i.glyphicon.glyphicon-list-alt
 								= linha.codigo
 							td= linha.linha
 							td= linha.via
+	.modal.fade(tabindex='-1', role='dialog', aria-hidden='true', id='linha.id')
 else
 	.alert.alert-danger.alert-dismissible(role='alert')
 		button(type='button', data-dismiss='alert', aria-label='Close').close
