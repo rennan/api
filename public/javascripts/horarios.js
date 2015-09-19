@@ -24,6 +24,7 @@
 
 (function() {
 
+	// Modal horarios
 	$(document)
 
 		.on('show.bs.modal', '#modal-horarios', function(event) {
@@ -44,4 +45,24 @@
 
 		});
 
+	// Modal itinerarios
+	$(document)
+
+		.on('show.bs.modal', '#modal-itinerarios', function(event) {
+
+			var modal = $(this);
+
+			$.ajax($(event.relatedTarget).prop('href')).done(function(response) {
+
+				modal.find('.modal-content').html(response);
+
+			});
+
+		})
+
+		.on('hidden.bs.modal', '#modal-itinerarios', function(event) {
+
+			$(this).find('.modal-content').empty();
+
+		});
 })();

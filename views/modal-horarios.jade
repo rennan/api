@@ -2,7 +2,8 @@
 	button(type='button', data-dismiss='modal' aria-label='Close', title='Fechar').close
 		span(aria-hidden='true') ×
 	h2.page-header= modalTitle
-	p Consulta de horários dos ônibus metropolitanos.
+	if horarios.length > 0
+		p Consulta de horários dos ônibus metropolitanos.
 .modal-body
 	if horarios.length > 0
 		// Nav tabs
@@ -32,11 +33,7 @@
 			#domingo.tab-pane(role='tabpanel') ...
 			#feriados.tab-pane(role='tabpanel') ...
 	else
-		.alert.alert-danger.alert-dismissible(role='alert')
-			button(type='button', data-dismiss='alert', aria-label='Close').close
-				span(aria-hidden='true')
-					&times;
-			| Nenhum horário cadastrado.
+		.alert.alert-danger Não há horários disponíveis para esta via de ônibus.
 .modal-footer
 	small
 		| * Esporadicamente horários de saída/chegada podem sofrer atrasos de alguns minutos.

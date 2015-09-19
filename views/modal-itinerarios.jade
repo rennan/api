@@ -1,0 +1,23 @@
+.modal-header
+	button(type='button', data-dismiss='modal' aria-label='Close', title='Fechar').close
+		span(aria-hidden='true') ×
+	h2.page-header= modalTitle
+	if paradas.length > 0
+		p Listagem de paradas dos ônibus metropolitanos.
+.modal-body
+	if paradas.length > 0
+		.tab-content
+			table.table.table-striped
+				thead
+					tr
+						th Ordem parada
+						th Local
+				tbody
+					each parada in paradas
+						tr
+							td= parada.ordem
+							td= parada.parada
+	else
+		.alert.alert-danger Não há itinerário disponível para esta via de ônibus.
+.modal-footer
+	small * Ordem de itinerários pode mudar de acordo com a via

@@ -134,10 +134,29 @@ router.get('/mostrar-horarios/:id_via', function(req, res) {
 					message: 'Erro desconhecido. Por favor tente novamente.'
 				});
 			} else {
-				var title = rows[0] ? (rows[0].linha + ' ' + rows[0].nome + ' - ' + rows[0].via) : 'Nenhum horário disponível';
+				var title = rows[0] ? (rows[0].linha + ' ' + rows[0].nome + ' - ' + rows[0].via) : 'Indisponível';
 				res.render('modal-horarios', {
-					status: true,
 					horarios: rows,
+					modalTitle: title
+				});
+			}
+		});
+	});
+});
+
+router.get('/mostrar-itinerarios/:id_via', function(req, res) {
+	var id_via = req.params.id_via;
+	req.getConnection(function(err, connection) {
+		var query = connection.query('SELECT circulares.linha, circulares.nome, vias.nome AS via, itinerarios.ordem, itinerarios.nome AS parada, itinerarios.latitude, itinerarios.longitude FROM circulares INNER JOIN vias ON circulares.id = vias.id_onibus INNER JOIN itinerarios ON itinerarios.id_via = vias.id WHERE vias.id = ? ORDER BY itinerarios.ordem', id_via, function(err, rows) {
+			if (err) {
+				res.status(400).json({
+					status: false,
+					message: 'Erro desconhecido. Por favor tente novamente.'
+				});
+			} else {
+				var title = rows[0] ? (rows[0].linha + ' ' + rows[0].nome + ' - ' + rows[0].via) : 'Indisponível'
+				res.render('modal-itinerarios', {
+					paradas: rows,
 					modalTitle: title
 				});
 			}
