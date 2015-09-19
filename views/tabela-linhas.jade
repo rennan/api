@@ -10,14 +10,18 @@ if linhas.length > 0
 					each linha in linhas
 						tr
 							td
-								a.icon-button(href='#', title='Exibir horários')
+								a.icon-button(title='Exibir horários', href='/mostrar-horarios/' + linha.id_via, data-toggle='modal', data-remote='true', data-target='#modal-horarios')
 									i.glyphicon.glyphicon-time
-								a.icon-button(href='#', title='Exibir itinerário', data-toggle='modal', data-target=linha.id)
+								a.icon-button(href='#', title='Exibir itinerário')
 									i.glyphicon.glyphicon-list-alt
 								= linha.codigo
 							td= linha.linha
 							td= linha.via
 	.modal.fade(tabindex='-1', role='dialog', aria-hidden='true', id='linha.id')
+
+	#modal-horarios.modal.fade(role='dialog', data-remote='true')
+			.modal-dialog
+				.modal-content
 else
 	.alert.alert-danger.alert-dismissible(role='alert')
 		button(type='button', data-dismiss='alert', aria-label='Close').close

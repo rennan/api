@@ -23,9 +23,10 @@
 
 
 (function() {
-	$('#modal-horarios')
 
-		.on('show.bs.modal', function(event) {
+	$(document)
+
+		.on('show.bs.modal', '#modal-horarios', function(event) {
 
 			var modal = $(this);
 
@@ -37,7 +38,7 @@
 
 		})
 
-		.on('hidden.bs.modal', function(event) {
+		.on('hidden.bs.modal', '#modal-horarios', function(event) {
 
 			$(this).find('.modal-content').empty();
 

@@ -108,7 +108,7 @@ router.get('/itinerarios', function(req, res, next) {
 
 router.get('/buscar-horario', function(req, res) {
 	req.getConnection(function(err, connection) {
-		var query = connection.query('SELECT circulares.nome AS linha, circulares.linha AS codigo, vias.nome AS via FROM circulares INNER JOIN vias ON vias.id_onibus = circulares.id WHERE ' + (req.query.tipo == 'nome' ? ('CONCAT(circulares.nome, " ", vias.nome) LIKE "%' + req.query.texto + '%"') : 'circulares.linha = "' + req.query.texto + '"'), function(err, rows) {
+		var query = connection.query('SELECT circulares.nome AS linha, circulares.linha AS codigo, vias.nome AS via, vias.id AS id_via FROM circulares INNER JOIN vias ON vias.id_onibus = circulares.id WHERE ' + (req.query.tipo == 'nome' ? ('CONCAT(circulares.nome, " ", vias.nome) LIKE "%' + req.query.texto + '%"') : 'circulares.linha = "' + req.query.texto + '"'), function(err, rows) {
 			if (err) {
 				res.status(400).json({
 					status: false,
@@ -124,8 +124,25 @@ router.get('/buscar-horario', function(req, res) {
 	});
 });
 
-router.get('/mostrar-horarios/:linha', function(req, res) {
-	res.render('modal-horarios');
+router.get('/mostrar-horarios/:id_via', function(req, res) {
+	var id_via = req.params.id_via;
+	req.getConnection(function(err, connection) {
+		var query = connection.query('SELECT circulares.linha AS linha, circulares.nome AS nome, vias.nome AS via, horarios.hora as hora, horarios.ponto_inicial as local FROM circulares INNER JOIN vias ON vias.id_onibus = circulares.id INNER JOIN horarios ON horarios.id_via = vias.id WHERE vias.id = ? AND dias_uteis = 1 ORDER BY horarios.hora', id_via, function(err, rows) {
+			if (err) {
+				res.status(400).json({
+					status: false,
+					message: 'Erro desconhecido. Por favor tente novamente.'
+				});
+			} else {
+				var title = rows[0] ? (rows[0].linha + ' ' + rows[0].nome + ' - ' + rows[0].via) : 'Nenhum horário disponível';
+				res.render('modal-horarios', {
+					status: true,
+					horarios: rows,
+					modalTitle: title
+				});
+			}
+		});
+	});
 });
 
 module.exports = router;
