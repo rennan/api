@@ -5,7 +5,7 @@ block content
 		h1.page-header Horários
 		p.bs-description
 			| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere cumque vel ipsa dolore repudiandae, quos facilis optio debitis. Excepturi tempora fugiat dolor quia neque omnis reprehenderit iste nulla. Nobis, voluptatum?
-		form(role='form')
+		form#buscar-horarios(role='form')
 			.row
 				.col-xs-3
 					label(for='modo-busca') Selecione o modo de busca
@@ -19,3 +19,8 @@ block content
 			button(type='submit').btn.btn-default.submit Buscar
 		hr
 		.table-result
+
+	a.btn.btn-default(href='/mostrar-horarios', data-toggle='modal', data-remote='true', data-target='#modal-horarios') Mostrar horários
+	#modal-horarios.modal.fade(role='dialog', data-remote='true')
+		.modal-dialog
+			.modal-content teste maravilhoso

@@ -60,6 +60,16 @@ body {
 	padding-top: 3rem;
 }
 
+.modal-header h2 {
+	padding-top: 1rem;
+	margin-top: 0;
+}
+
+.modal-body > div {
+	max-height: 320px;
+	overflow-x: hidden;
+}
+
 .button {
 	color: #333333;
 }

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Express' });
+	res.render('index', { title: 'API Transporte Público' });
 });
 
 router.get('/cidades', function(req, res, next) {
@@ -15,7 +15,7 @@ router.get('/cidades', function(req, res, next) {
 				});
 			} else {
 				res.render('cidades', { 
-					title: 'Cidades',
+					title: 'API - Cidades',
 					setMenu: 'cidades',
 					script: 'cidades',
 					cidades: rows
@@ -35,7 +35,7 @@ router.get('/empresas', function(req, res, next) {
 				});
 			} else {
 				res.render('empresas', { 
-					title: 'Empresas',
+					title: 'API - Empresas',
 					setMenu: 'empresas',
 					empresas: rows
 				});
@@ -54,7 +54,7 @@ router.get('/linhas', function(req, res, next) {
 				});
 			} else {
 				res.render('linhas', { 
-					title: 'Linhas',
+					title: 'API - Linhas',
 					setMenu: 'linhas',
 					circulares: rows
 				});
@@ -73,7 +73,7 @@ router.get('/vias', function(req, res, next) {
 				});
 			} else {
 				res.render('vias', { 
-					title: 'Vias',
+					title: 'API - Vias',
 					setMenu: 'vias',
 					vias: rows
 				});
@@ -92,7 +92,7 @@ router.get('/horarios', function(req, res, next) {
 				});
 			} else {
 				res.render('horarios', { 
-					title: 'Horários',
+					title: 'API - Horários',
 					setMenu: 'horarios',
 					horarios: rows,
 					script: 'horarios'
@@ -122,6 +122,10 @@ router.get('/buscar-horario', function(req, res) {
 			}
 		});
 	});
+});
+
+router.get('/mostrar-horarios/:linha', function(req, res) {
+	res.render('modal-horarios');
 });
 
 module.exports = router;

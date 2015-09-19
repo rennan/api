@@ -276,7 +276,7 @@ router.route('/linha/:linha')
 	.get(function(req, res) {
 		var linha = req.params.linha;
 		req.getConnection(function(err, connection) {
-			var query = connection.query('SELECT circulares.linha AS Linha, circulares.nome AS Nome, vias.nome AS Via, horarios.hora as Hora, horarios.ponto_inicial as Saída FROM circulares INNER JOIN vias ON vias.id_onibus = circulares.id INNER JOIN horarios ON horarios.id_via = vias.id WHERE circulares.linha = ? AND dias_uteis = 1 ORDER BY horarios.hora', linha, function(err, rows) {
+			var query = connection.query('SELECT circulares.linha AS linha, circulares.nome AS nome, vias.nome AS via, horarios.hora as hora, horarios.ponto_inicial as local FROM circulares INNER JOIN vias ON vias.id_onibus = circulares.id INNER JOIN horarios ON horarios.id_via = vias.id WHERE circulares.linha = ? AND dias_uteis = 1 ORDER BY horarios.hora', linha, function(err, rows) {
 				if (err) {
 					res.status(400).json({
 						status: false,
