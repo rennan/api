@@ -1,10 +1,7 @@
 (function() {
 	$('#buscar-horarios').on('submit', function(event) {
-
 		event.preventDefault();
-
 		if ($('#texto-busca').val() != '') {
-
 			$.ajax({
 				url: '/buscar-horario',
 				data: {
@@ -15,54 +12,33 @@
 			.done(function(res) {
 				$('.table-result').html(res);
 			});
-
 		}
-
 	});
 })();
 
 
 (function() {
-
 	// Modal horarios
-	$(document)
-
-		.on('show.bs.modal', '#modal-horarios', function(event) {
-
-			var modal = $(this);
-
-			$.ajax($(event.relatedTarget).prop('href')).done(function(response) {
-
-				modal.find('.modal-content').html(response);
-
-			});
-
-		})
-
-		.on('hidden.bs.modal', '#modal-horarios', function(event) {
-
-			$(this).find('.modal-content').empty();
-
+	$(document).on('show.bs.modal', '#modal-horarios', function(event) {
+		var modal = $(this);
+		$.ajax($(event.relatedTarget).prop('href'))
+		.done(function(response) {
+			modal.find('.modal-content').html(response);
 		});
+	})
+	.on('hidden.bs.modal', '#modal-horarios', function(event) {
+		$(this).find('.modal-content').empty();
+	});
 
 	// Modal itinerarios
-	$(document)
-
-		.on('show.bs.modal', '#modal-itinerarios', function(event) {
-
-			var modal = $(this);
-
-			$.ajax($(event.relatedTarget).prop('href')).done(function(response) {
-
-				modal.find('.modal-content').html(response);
-
-			});
-
-		})
-
-		.on('hidden.bs.modal', '#modal-itinerarios', function(event) {
-
-			$(this).find('.modal-content').empty();
-
+	$(document).on('show.bs.modal', '#modal-itinerarios', function(event) {
+		var modal = $(this);
+		$.ajax($(event.relatedTarget).prop('href'))
+		.done(function(response) {
+			modal.find('.modal-content').html(response);
 		});
+	})
+	.on('hidden.bs.modal', '#modal-itinerarios', function(event) {
+		$(this).find('.modal-content').empty();
+	});
 })();
