@@ -19,15 +19,30 @@ var express = require('express'),
 
 var app = express();
 
-// Conexao no BD
-app.use(
-	connection(mysql, {
-		host: 'us-cdbr-iron-east-03.cleardb.net', //'localhost',
-		user: 'bf16362c3ebda0', //'root',
-		password: '1acf436a',
-		database: 'heroku_906decab4935e66' //'db_api_transporte_coletivo',
-	}, 'request')
-);
+var environment = 'dev';
+
+if (environment == 'dev') {
+	// Conexao no BD
+	app.use(
+		connection(mysql, {
+			host: 'localhost',
+			user: 'root',
+			password: '',
+			database: 'db_api_transporte_coletivo',
+		}, 'request')
+	);
+} else {
+	// Conexao no BD
+	app.use(
+		connection(mysql, {
+			host: 'us-cdbr-iron-east-03.cleardb.net', //'localhost',
+			user: 'bf16362c3ebda0', //'root',
+			password: '1acf436a',
+			database: 'heroku_906decab4935e66' //'db_api_transporte_coletivo',
+		}, 'request')
+	);
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
