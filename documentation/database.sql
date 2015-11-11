@@ -5,21 +5,21 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema db_api_transporte_coletivo
+-- Schema heroku_906decab4935e66
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema db_api_transporte_coletivo
+-- Schema heroku_906decab4935e66
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `db_api_transporte_coletivo` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `db_api_transporte_coletivo` ;
+CREATE SCHEMA IF NOT EXISTS `heroku_906decab4935e66` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `heroku_906decab4935e66` ;
 
 -- -----------------------------------------------------
--- Table `db_api_transporte_coletivo`.`cidades`
+-- Table `heroku_906decab4935e66`.`cidades`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_api_transporte_coletivo`.`cidades` ;
+DROP TABLE IF EXISTS `heroku_906decab4935e66`.`cidades` ;
 
-CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`cidades` (
+CREATE TABLE IF NOT EXISTS `heroku_906decab4935e66`.`cidades` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(60) NOT NULL,
   `estado` VARCHAR(2) NOT NULL,
@@ -28,11 +28,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_api_transporte_coletivo`.`empresas`
+-- Table `heroku_906decab4935e66`.`empresas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_api_transporte_coletivo`.`empresas` ;
+DROP TABLE IF EXISTS `heroku_906decab4935e66`.`empresas` ;
 
-CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`empresas` (
+CREATE TABLE IF NOT EXISTS `heroku_906decab4935e66`.`empresas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_cidade` INT NOT NULL,
   `nome` VARCHAR(60) NOT NULL,
@@ -42,18 +42,18 @@ CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`empresas` (
   INDEX `fk_empresas_cidades1_idx` (`id_cidade` ASC),
   CONSTRAINT `fk_empresas_cidades1`
     FOREIGN KEY (`id_cidade`)
-    REFERENCES `db_api_transporte_coletivo`.`cidades` (`id`)
+    REFERENCES `heroku_906decab4935e66`.`cidades` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_api_transporte_coletivo`.`circulares`
+-- Table `heroku_906decab4935e66`.`circulares`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_api_transporte_coletivo`.`circulares` ;
+DROP TABLE IF EXISTS `heroku_906decab4935e66`.`circulares` ;
 
-CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`circulares` (
+CREATE TABLE IF NOT EXISTS `heroku_906decab4935e66`.`circulares` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_empresa` INT NOT NULL,
   `linha` VARCHAR(45) NULL,
@@ -64,18 +64,18 @@ CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`circulares` (
   INDEX `fk_circulares_empresas1_idx` (`id_empresa` ASC),
   CONSTRAINT `fk_circulares_empresas1`
     FOREIGN KEY (`id_empresa`)
-    REFERENCES `db_api_transporte_coletivo`.`empresas` (`id`)
+    REFERENCES `heroku_906decab4935e66`.`empresas` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_api_transporte_coletivo`.`vias`
+-- Table `heroku_906decab4935e66`.`vias`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_api_transporte_coletivo`.`vias` ;
+DROP TABLE IF EXISTS `heroku_906decab4935e66`.`vias` ;
 
-CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`vias` (
+CREATE TABLE IF NOT EXISTS `heroku_906decab4935e66`.`vias` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_onibus` INT NOT NULL,
   `nome` VARCHAR(60) NOT NULL,
@@ -83,18 +83,18 @@ CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`vias` (
   INDEX `fk_vias_circulares1_idx` (`id_onibus` ASC),
   CONSTRAINT `fk_vias_circulares1`
     FOREIGN KEY (`id_onibus`)
-    REFERENCES `db_api_transporte_coletivo`.`circulares` (`id`)
+    REFERENCES `heroku_906decab4935e66`.`circulares` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_api_transporte_coletivo`.`horarios`
+-- Table `heroku_906decab4935e66`.`horarios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_api_transporte_coletivo`.`horarios` ;
+DROP TABLE IF EXISTS `heroku_906decab4935e66`.`horarios` ;
 
-CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`horarios` (
+CREATE TABLE IF NOT EXISTS `heroku_906decab4935e66`.`horarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_via` INT NOT NULL,
   `ponto_inicial` VARCHAR(90) NOT NULL,
@@ -107,18 +107,18 @@ CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`horarios` (
   INDEX `fk_horarios_vias1_idx` (`id_via` ASC),
   CONSTRAINT `fk_horarios_vias1`
     FOREIGN KEY (`id_via`)
-    REFERENCES `db_api_transporte_coletivo`.`vias` (`id`)
+    REFERENCES `heroku_906decab4935e66`.`vias` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_api_transporte_coletivo`.`itinerarios`
+-- Table `heroku_906decab4935e66`.`itinerarios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_api_transporte_coletivo`.`itinerarios` ;
+DROP TABLE IF EXISTS `heroku_906decab4935e66`.`itinerarios` ;
 
-CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`itinerarios` (
+CREATE TABLE IF NOT EXISTS `heroku_906decab4935e66`.`itinerarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_via` INT NOT NULL,
   `ordem` INT NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `db_api_transporte_coletivo`.`itinerarios` (
   INDEX `fk_itinerarios_vias1_idx` (`id_via` ASC),
   CONSTRAINT `fk_itinerarios_vias1`
     FOREIGN KEY (`id_via`)
-    REFERENCES `db_api_transporte_coletivo`.`vias` (`id`)
+    REFERENCES `heroku_906decab4935e66`.`vias` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
