@@ -1,1 +1,1 @@
-web: npm start
+web: set DEBUG=api-transporte-publico & npm start
