@@ -22,10 +22,10 @@ var app = express();
 // Conexao no BD
 app.use(
 	connection(mysql, {
-		host: 'localhost',
-		user: 'root',
-		password: '',
-		database: 'db_api_transporte_coletivo',
+		host: 'us-cdbr-east-04.cleardb.com', //'localhost',
+		user: 'bf16362c3ebda0', //'root',
+		password: '1acf436a',
+		database: 'heroku_906decab4935e66' //'db_api_transporte_coletivo',
 	}, 'request')
 );
 
