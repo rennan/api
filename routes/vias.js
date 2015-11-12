@@ -163,10 +163,7 @@ router.route('/:id')
 					});
 				} else {
 					if (result.affectedRows > 0) {
-						res.status(200).json({
-							status: true,
-							message: 'Via removida com sucesso.'
-						});
+						res.status(204); // Response 204 nao possui mensagem de status
 					} else {
 						res.status(200).json({
 							status: false,

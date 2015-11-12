@@ -133,10 +133,7 @@ router.route('/:id')
 					});
 				} else {
 					if (result.affectedRows > 0) {
-						res.status(204).json({
-							status: true,
-							message: 'Cidade removida com sucesso.'
-						});
+						res.status(204); // Response 204 nao possui mensagem de status
 					} else {
 						res.status(204).json({
 							status: false,
