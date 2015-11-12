@@ -14,7 +14,7 @@ router.get('/cidades', function(req, res, next) {
 					message: 'Erro desconhecido. Por favor tente novamente.'
 				});
 			} else {
-				res.render('cidades', { 
+				res.render('cidades', {
 					title: 'API - Cidades',
 					setMenu: 'cidades',
 					script: 'cidades',
@@ -34,7 +34,7 @@ router.get('/empresas', function(req, res, next) {
 					message: 'Erro desconhecido. Por favor tente novamente.'
 				});
 			} else {
-				res.render('empresas', { 
+				res.render('empresas', {
 					title: 'API - Empresas',
 					setMenu: 'empresas',
 					empresas: rows
@@ -53,7 +53,7 @@ router.get('/linhas', function(req, res, next) {
 					message: 'Erro desconhecido. Por favor tente novamente.'
 				});
 			} else {
-				res.render('linhas', { 
+				res.render('linhas', {
 					title: 'API - Linhas',
 					setMenu: 'linhas',
 					circulares: rows
@@ -72,7 +72,7 @@ router.get('/vias', function(req, res, next) {
 					message: 'Erro desconhecido. Por favor tente novamente.'
 				});
 			} else {
-				res.render('vias', { 
+				res.render('vias', {
 					title: 'API - Vias',
 					setMenu: 'vias',
 					vias: rows
@@ -91,7 +91,7 @@ router.get('/horarios', function(req, res, next) {
 					message: 'Erro desconhecido. Por favor tente novamente.'
 				});
 			} else {
-				res.render('horarios', { 
+				res.render('horarios', {
 					title: 'API - Horários',
 					setMenu: 'horarios',
 					horarios: rows,

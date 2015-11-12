@@ -2,13 +2,13 @@
 -- INSERTS para Cidades
 -- -----------------------------------------------------
 
-INSERT INTO cidades (nome, estado) 
-    VALUES 
-    ('Londrina', 'PR'), 
-    ('Curitiba', 'PR'), 
-    ('Maringá', 'PR'), 
-    ('Ponta Grossa', 'PR'), 
-    ('Cascavel', 'PR'), 
+INSERT INTO cidades (nome, estado)
+    VALUES
+    ('Londrina', 'PR'),
+    ('Curitiba', 'PR'),
+    ('Maringá', 'PR'),
+    ('Ponta Grossa', 'PR'),
+    ('Cascavel', 'PR'),
     ('Foz do Iguaçu', 'PR');
 
 -- -----------------------------------------------------
@@ -17,12 +17,12 @@ INSERT INTO cidades (nome, estado)
 
 INSERT INTO empresas (id_cidade, nome, data_criacao, data_atualizacao)
     VALUES
-    ('1', 'TCGL', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')), 
-    ('1', 'Londrisul', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')), 
-    ('2', 'URBS', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')), 
-    ('3', 'TCCC', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')), 
-    ('4', 'VCG', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')), 
-    ('5', 'CETTRANS', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')), 
+    ('1', 'TCGL', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')),
+    ('1', 'Londrisul', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')),
+    ('2', 'URBS', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')),
+    ('3', 'TCCC', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')),
+    ('4', 'VCG', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')),
+    ('5', 'CETTRANS', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s')),
     ('6', 'FOZTRANS', DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'), DATE_FORMAT(NOW(), '%d/%m/%Y %H:%i:%s'));
 
 -- -----------------------------------------------------
@@ -39,8 +39,8 @@ INSERT INTO circulares (id_empresa, linha, nome, data_criacao, data_atualizacao)
 -- INSERTS para as VIAS
 -- -----------------------------------------------------
 
-INSERT INTO vias (id_onibus, nome) 
-    VALUES 
+INSERT INTO vias (id_onibus, nome)
+    VALUES
     ('1', 'Linha Convencional'),
     ('1', 'Parque Tauá'),
     ('1', 'Expresso UTFPR - Boulevard');
@@ -50,7 +50,7 @@ INSERT INTO vias (id_onibus, nome)
 -- -----------------------------------------------------
 
 INSERT INTO horarios (id_via, ponto_inicial, dias_uteis, sabado, domingo, feriado, hora)
-    VALUES 
+    VALUES
     ('1', 'Terminal Central', true, false, false, false, '06:05'),
     ('1', 'Terminal Central', true, false, false, false, '06:45'),
     ('2', 'Terminal Central', true, false, false, false, '07:05'),
@@ -169,7 +169,7 @@ INSERT INTO horarios (id_via, ponto_inicial, dias_uteis, sabado, domingo, feriad
 -- -----------------------------------------------------
 
 INSERT INTO itinerarios (id_via, nome, ordem)
-    VALUES ('1', 'Terminal Central', '1', '-23.3087456', '-51.160759'),
+    VALUES ('1', 'Terminal Central', '1'),
     ('1', 'Rua Benjamin Constant', '2'),
     ('1', 'Av. Leste-Oeste', '3'),
     ('1', 'Av. Theodoro Victorelli', '4'),
@@ -192,4 +192,4 @@ INSERT INTO itinerarios (id_via, nome, ordem)
     ('1', 'Av. Leste-Oeste', '21'),
     ('1', 'Rua Sergipe', '22'),
     ('1', 'Rua Professor João Cândido', '23'),
-    ('1', 'Terminal Central', '1', '-23.3087456', '-51.160759');
+    ('1', 'Terminal Central', '1');
